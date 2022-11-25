@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "app.battery.minimum",
+  "type": "java.lang.String",
+  "description": "A description for 'app.battery.minimum'"
+}]}

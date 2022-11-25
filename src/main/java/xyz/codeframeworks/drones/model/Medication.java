@@ -2,9 +2,12 @@ package xyz.codeframeworks.drones.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -25,13 +28,16 @@ public class Medication {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
     @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
     private Long ID;
-    @Column(name= "name")
+    @Column(name = "name")
     private String name;
-    @Column(name= "weight")
+    @Column(name = "weight")
     private Double weight;
-    @Column(name= "code")
+    @Column(name = "code")
     private String code;
     @Column(name = "image")
     private String image;
-    
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "drone_id", nullable = false)
+    private Drone drone;
+
 }
