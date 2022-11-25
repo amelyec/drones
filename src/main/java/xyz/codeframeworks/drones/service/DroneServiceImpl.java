@@ -5,15 +5,18 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import xyz.codeframeworks.drones.model.Drone;
 import xyz.codeframeworks.drones.model.DroneState;
 import xyz.codeframeworks.drones.model.Medication;
 import xyz.codeframeworks.drones.repository.DroneRepository;
 
+@Slf4j
 @Service
 public class DroneServiceImpl implements DroneService {
 
@@ -54,7 +57,10 @@ public class DroneServiceImpl implements DroneService {
         return drone;
     }
 
+    // Getting Error 
     public Set<Medication> loadedDrone(Long id) {
-        return droneRepository.findById(id).get().getMedications();
+        Drone drone = droneRepository.findById(id).get();
+        log.info(drone.getMedications().toString());
+        return drone.getMedications();
     }
 }

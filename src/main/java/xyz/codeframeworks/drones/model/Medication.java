@@ -39,5 +39,12 @@ public class Medication {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "drone_id", nullable = false)
     private Drone drone;
+    @Override
+    public String toString() {
+        return "Medication [ID=" + ID + ", name=" + name + ", weight=" + weight + ", code=" + code + ", image=" + image
+                + ", drone=" + drone + "]";
+    }
+
+    
 
 }

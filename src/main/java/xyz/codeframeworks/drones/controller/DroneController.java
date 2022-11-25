@@ -20,36 +20,36 @@ public class DroneController {
     @Autowired
     DroneServiceImpl droneService;
 
-    // ANSWER: registering a drone; 
+    // ANSWER: registering a drone;
     @PostMapping("/drones")
     public ResponseEntity<?> registerDrone(@RequestBody Drone drone) {
         return ResponseEntity.ok(droneService.registerDrone(drone));
     }
 
-    // ANSWER: loading a drone with medication items; 
+    // ANSWER: loading a drone with medication items;
     @GetMapping("/drones/load/{id}")
     public ResponseEntity<?> loadDrone(@PathVariable("id") Long id, @RequestBody Set<Medication> medications) {
         return ResponseEntity.ok(droneService.loadDrone(id, medications));
     }
 
-    // ANSWER: checking loaded medication items for a given drone; 
+    // Getting Error
+    // ANSWER: checking loaded medication items for a given drone;
     @GetMapping("/drones/loaded/{id}")
     public ResponseEntity<?> loadedDrone(@PathVariable("id") Long id) {
         return ResponseEntity.ok(droneService.loadedDrone(id));
     }
 
-    // ANSWER: checking available drones for loading; 
+    // ANSWER: checking available drones for loading;
     @GetMapping("/drones/available")
     public ResponseEntity<?> getAvailableDrones() {
         return ResponseEntity.ok(droneService.getAvailableDrones());
     }
-    
-    // ANSWER: check drone battery level for a given drone; 
+
+    // ANSWER: check drone battery level for a given drone;
     @GetMapping("/drones/battery/{id}")
     public ResponseEntity<?> getDrone(@PathVariable("id") Long id) {
         return ResponseEntity.ok(droneService.getDrone(id));
     }
-
 
     // ADDITIONAL: find all drones
     @GetMapping("/drones")
