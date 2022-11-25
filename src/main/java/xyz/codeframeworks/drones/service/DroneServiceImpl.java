@@ -3,6 +3,7 @@ package xyz.codeframeworks.drones.service;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import xyz.codeframeworks.drones.model.Drone;
 import xyz.codeframeworks.drones.model.DroneState;
+import xyz.codeframeworks.drones.model.Medication;
 import xyz.codeframeworks.drones.repository.DroneRepository;
 
 @Service
@@ -43,5 +45,16 @@ public class DroneServiceImpl implements DroneService {
         map.put("bateryPercentage", batteryPercentage.toString());
         map.put("loadingMedication", loadable);
         return map;
+    }
+
+    public Drone loadDrone(Long id, Set<Medication> medications) {
+        Drone drone = droneRepository.findById(id).get();
+        drone.setMedications(medications);
+        droneRepository.save(drone);
+        return drone;
+    }
+
+    public Set<Medication> loadedDrone(Long id) {
+        return droneRepository.findById(id).get().getMedications();
     }
 }

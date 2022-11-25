@@ -1,5 +1,7 @@
 package xyz.codeframeworks.drones.controller;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import xyz.codeframeworks.drones.model.Drone;
+import xyz.codeframeworks.drones.model.Medication;
 import xyz.codeframeworks.drones.service.DroneServiceImpl;
 
 @RestController
@@ -24,10 +27,16 @@ public class DroneController {
     }
 
     // ANSWER: loading a drone with medication items; 
-
+    @GetMapping("/drones/load/{id}")
+    public ResponseEntity<?> loadDrone(@PathVariable("id") Long id, @RequestBody Set<Medication> medications) {
+        return ResponseEntity.ok(droneService.loadDrone(id, medications));
+    }
 
     // ANSWER: checking loaded medication items for a given drone; 
-
+    @GetMapping("/drones/loaded/{id}")
+    public ResponseEntity<?> loadedDrone(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(droneService.loadedDrone(id));
+    }
 
     // ANSWER: checking available drones for loading; 
     @GetMapping("/drones/available")
