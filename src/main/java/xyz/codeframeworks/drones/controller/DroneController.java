@@ -32,7 +32,6 @@ public class DroneController {
         return ResponseEntity.ok(droneService.loadDrone(id, medications));
     }
 
-    // Getting Error
     // ANSWER: checking loaded medication items for a given drone;
     @GetMapping("/drones/loaded/{id}")
     public ResponseEntity<?> loadedDrone(@PathVariable("id") Long id) {

@@ -1,11 +1,12 @@
 package xyz.codeframeworks.drones.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -57,10 +58,7 @@ public class DroneServiceImpl implements DroneService {
         return drone;
     }
 
-    // Getting Error 
     public Set<Medication> loadedDrone(Long id) {
-        Drone drone = droneRepository.findById(id).get();
-        log.info(drone.getMedications().toString());
-        return drone.getMedications();
+        return droneRepository.findById(id).get().getMedications();
     }
 }
