@@ -10,7 +10,7 @@ spring:
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      ddl-auto: update
+      ddl-auto: create-drop
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
   h2:
@@ -20,6 +20,9 @@ spring:
       settings:
         web-allow-others: true
         trace: true
+  sql:
+    init:
+      platform: h2
 logging:
   level:
     org:
