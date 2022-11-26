@@ -27,8 +27,7 @@ import lombok.Setter;
 public class Drone {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
     @Column(name = "serial_number", length=100)
     private String serialNumber;

@@ -28,8 +28,7 @@ import lombok.Setter;
 public class Medication {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
     @Pattern(regexp="^[a-zA-Z0-9\\-_]+",message="allowed only letters, numbers, ‘-‘, ‘_’")  
     @Column(name = "name")
