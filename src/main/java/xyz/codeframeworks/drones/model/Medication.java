@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -30,24 +31,19 @@ public class Medication {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
     @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
     private Long ID;
+    @Pattern(regexp="^[a-zA-Z0-9\\-_]+",message="allowed only letters, numbers, ‘-‘, ‘_’")  
     @Column(name = "name")
     private String name;
     @Column(name = "weight")
     private Double weight;
+    @Pattern(regexp="^[A-Z0-9_]+",message="allowed only upper case letters, underscore and numbers")  
     @Column(name = "code")
     private String code;
     @Column(name = "image")
     private String image;
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "drone_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "drone_id", nullable = true)
     private Drone drone;
-    @Override
-    public String toString() {
-        return "Medication [ID=" + ID + ", name=" + name + ", weight=" + weight + ", code=" + code + ", image=" + image
-                + ", drone=" + drone + "]";
-    }
-
-    
 
 }
