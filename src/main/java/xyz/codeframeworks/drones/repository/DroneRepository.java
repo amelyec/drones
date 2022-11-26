@@ -10,5 +10,5 @@ import xyz.codeframeworks.drones.model.DroneState;
 public interface DroneRepository extends CrudRepository<Drone, Long> {
 
     Iterable<Drone> findByBatteryPercentageGreaterThanAndStateEquals(Double batteryLevel, DroneState state);
-    
+
 }

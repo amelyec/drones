@@ -7,5 +7,5 @@ import xyz.codeframeworks.drones.model.Medication;
 
 @Repository
 public interface MedicationRepository extends CrudRepository<Medication, Long> {
-    
+
 }

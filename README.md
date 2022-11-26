@@ -26,7 +26,7 @@ Add Drone
 curl -X POST \
   'http://127.0.0.1:9092/drones' \
   --header 'Content-Type: application/json' \
-  --data-raw '{
+  --data '{
     "serialNumber": "CW01",
     "model": "Middleweight",
     "weightLimit": 300.0,

@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
@@ -30,12 +29,12 @@ public class Medication {
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
-    @Pattern(regexp="^[a-zA-Z0-9\\-_]+",message="allowed only letters, numbers, ‘-‘, ‘_’")  
+    @Pattern(regexp = "^[a-zA-Z0-9\\-_]+", message = "allowed only letters, numbers, ‘-‘, ‘_’")
     @Column(name = "name")
     private String name;
     @Column(name = "weight")
     private Double weight;
-    @Pattern(regexp="^[A-Z0-9_]+",message="allowed only upper case letters, underscore and numbers")  
+    @Pattern(regexp = "^[A-Z0-9_]+", message = "allowed only upper case letters, underscore and numbers")
     @Column(name = "code")
     private String code;
     @Column(name = "image")

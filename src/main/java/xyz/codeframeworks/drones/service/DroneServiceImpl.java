@@ -1,8 +1,6 @@
 package xyz.codeframeworks.drones.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -43,7 +41,10 @@ public class DroneServiceImpl implements DroneService {
         Optional<Drone> dOptional = droneRepository.findById(id);
         Double batteryPercentage = dOptional.get().getBatteryPercentage();
         String loadable;
-        if(batteryPercentage > batteryLevel) loadable = "Can load medication"; else loadable = "Can't load medication";
+        if (batteryPercentage > batteryLevel)
+            loadable = "Can load medication";
+        else
+            loadable = "Can't load medication";
         HashMap<String, String> map = new HashMap<>();
         map.put("id", id.toString());
         map.put("bateryPercentage", batteryPercentage.toString());
